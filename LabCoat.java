@@ -14,12 +14,18 @@
 
 /** */
 public class LabCoat extends Gear {
+	private String name;
+	
+	public LabCoat(String _name) {
+		name = _name;
+	}
+	
 	/** */
 	public boolean specialEffect(Virologist v, Virologist att, Agent a) {
 		main.increaseIndentation();
-		System.out.println(main.printIndentation() + "->specialEffect()");
+		System.out.println(main.printIndentation() + "->" + name + ".specialEffect()");
 		
-		System.out.print("Does the labcoat protect the virologist? (y/n): ");
+		System.out.print(main.printIndentation() + "Does the labcoat protect the virologist? (y/n): ");
     	if(main.sc.next().charAt(0) == 'y') {
     		System.out.println(main.printIndentation() + "<-true");
     		main.decreaseIndentation();
@@ -28,5 +34,22 @@ public class LabCoat extends Gear {
     	System.out.println(main.printIndentation() + "<-false");
 		main.decreaseIndentation();
 		return false;
+	}
+	
+	/** */
+	public void onPickup(Virologist v) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".onPickup()");
+		v.addGear(this);
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
+	}
+	
+	/** */
+	public void onLoss(Virologist v) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".onLoss()");
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
 	}
 }

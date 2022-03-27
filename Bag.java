@@ -14,13 +14,42 @@
 
 /** */
 public class Bag extends Gear {
+	private String name;
+	
+	public Bag(String _name) {
+		name = _name;
+	}
+	
 	/** */
 	public boolean specialEffect(Virologist v, Virologist att, Agent a) {
 		main.increaseIndentation();
-		System.out.println(main.printIndentation() + "->specialEffect()");
+		System.out.println(main.printIndentation() + "->" + name + ".specialEffect()");
 		
     	System.out.println(main.printIndentation() + "<-false");
 		main.decreaseIndentation();
 		return false;
+	}
+	
+	/** */
+	public void onPickup(Virologist v) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".onPickup()");
+		v.addGear(this);
+		v.setMaxMaterials(15);
+		v.setMaxAgents(5);
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
+	}
+	
+	/** */
+	public void onLoss(Virologist v) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".onLoss()");
+		v.setMaxMaterials(5);
+		v.setMaxAgents(2);
+		v.addAminoacid(0);
+		v.addNucleotid(0);
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
 	}
 }

@@ -14,8 +14,11 @@
 
 /** */
 public class Laboratory extends Field {
-	/** */
-	public GeneticCode Unnamed1;
+	public GeneticCode geneticCode;
+	
+	public Laboratory(String _name) {
+		super(_name);
+	}
 	
 	/** */
 	public void interact(Virologist v) {

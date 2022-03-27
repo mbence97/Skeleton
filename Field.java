@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 //
@@ -16,35 +17,60 @@ import java.util.List;
 
 /** */
 public class Field {
-	/** */
-	private Field neighbours;
+	private List<Field> neigbours = new ArrayList<Field>();
+	protected List<Virologist> virologists = new ArrayList<Virologist>();
+	private String name;
 	
-	/** */
-	protected Virologist virologists;
+	public Field(String _name) {
+		name = _name;
+	}
 	
-	/** */
 	public void interact(Virologist v) {
+		
 	}
 	
 	/** */
 	public List<Virologist> getVirologists() {
-		return null;
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".getVirologists()");
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
+		return virologists;
 	}
 	
 	/** */
 	public void setNeighbours(List<Field> n) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".setNeighbours()");
+		neigbours = n;
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
 	}
 	
 	/** */
 	public List<Field> getNeighbours() {
-		return null;
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".getNeighbours()");
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
+		return neigbours;
 	}
 	
 	/** */
 	public void addVirologist(Virologist v) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".addVirologist()");
+		virologists.add(v);
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
 	}
 	
 	/** */
 	public void removeVirologist(Virologist v) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".removeVirologist()");
+		virologists.remove(v);
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
 	}
 }

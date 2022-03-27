@@ -16,10 +16,17 @@ import java.util.List;
 
 /** */
 public class Chorea extends Agent {
+	
+	private String name;
+	
+	public Chorea(String _name) {
+		name = _name;
+	}
+	
 	/** */
 	public void causeEffect(List<Virologist> targets, Virologist source) {
 		main.increaseIndentation();
-		System.out.println(main.printIndentation() + "->causeEffect()");
+		System.out.println(main.printIndentation() + "->" + name + ".causeEffect()");
 		
 		for(int i=0;i<targets.size();i++) {
 			Virologist t = targets.get(i);

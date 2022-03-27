@@ -14,8 +14,11 @@
 
 /** */
 public class Shelter extends Field {
-	/** */
-	public Gear Unnamed1;
+	public Gear gear;
+	
+	public Shelter(String _name) {
+		super(_name);
+	}
 	
 	/** */
 	public void interact(Virologist v) {

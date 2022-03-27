@@ -16,8 +16,25 @@ import java.util.List;
 
 /** */
 public class Amnesia extends Agent {
+	private String name;
+	
+	public Amnesia(String _name) {
+		name = _name;
+	}
+	
 	/** */
 	public void causeEffect(List<Virologist> targets, Virologist source) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".causeEffect()");
+		
+		for(int i=0;i<targets.size();i++) {
+			Virologist t = targets.get(i);
+			if(t.infect(this, source)) {
+				t.forgetGeneticCodes();
+			}
+		}
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
 	}
 	
 	/** */

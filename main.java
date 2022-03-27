@@ -18,14 +18,19 @@ public class main {
     		attackChorea();
     		break;
     	case 5:
+    		attackParalisis();
     		break;
     	case 6:
+    		attackAmnesia();
     		break;
     	case 7:
+    		useVaccine();
     		break;
     	case 8:
+    		steal();
     		break;
     	case 9:
+    		move();
     		break;
     	case 10:
     		break;
@@ -91,19 +96,136 @@ public class main {
     
     public static void attackChorea() {
     	System.out.println("Virologist attacks with chorea");
-    	Virologist v1 = new Virologist();
-    	Virologist v2 = new Virologist();
-    	Chorea c = new Chorea();
-    	Bag b = new Bag();
-    	LabCoat l = new LabCoat();
-    	Gloves g = new Gloves();
+    	System.out.println("Initializing:");
+    	Virologist v1 = new Virologist("v1");
+    	Virologist v2 = new Virologist("v2");
+    	Chorea c = new Chorea("c");
+    	Bag b = new Bag("b");
+    	LabCoat l = new LabCoat("l");
+    	Gloves g = new Gloves("g");
     	
     	v2.addGear(b);
     	v2.addGear(l);
     	v2.addGear(g);
     	
+    	System.out.println("Start:");
     	List<Virologist> targets = new ArrayList<Virologist>();
     	targets.add(v2);
     	v1.useAgent(targets, c);
+    }
+    
+    public static void attackParalisis() {
+    	System.out.println("Virologist attacks with paralisis");
+    	System.out.println("Initializing:");
+    	Virologist v1 = new Virologist("v1");
+    	Virologist v2 = new Virologist("v2");
+    	Paralisis p = new Paralisis("p");
+    	Bag b = new Bag("b");
+    	LabCoat l = new LabCoat("l");
+    	Gloves g = new Gloves("g");
+    	
+    	v2.addGear(b);
+    	v2.addGear(l);
+    	v2.addGear(g);
+    	
+    	System.out.println("Start:");
+    	List<Virologist> targets = new ArrayList<Virologist>();
+    	targets.add(v2);
+    	v1.useAgent(targets, p);
+    }
+    
+    public static void attackAmnesia() {
+    	System.out.println("Virologist attacks with amnesia");
+    	System.out.println("Initializing:");
+    	Virologist v1 = new Virologist("v1");
+    	Virologist v2 = new Virologist("v2");
+    	Amnesia a = new Amnesia("a");
+    	Bag b = new Bag("b");
+    	LabCoat l = new LabCoat("l");
+    	Gloves g = new Gloves("g");
+    	
+    	v2.addGear(b);
+    	v2.addGear(l);
+    	v2.addGear(g);
+    	
+    	System.out.println("Start:");
+    	List<Virologist> targets = new ArrayList<Virologist>();
+    	targets.add(v2);
+    	v1.useAgent(targets, a);
+    }
+    
+    public static void useVaccine() {
+    	System.out.println("Virologist uses vaccine");
+    	System.out.println("Initializing:");
+    	System.out.println("1. Virologist uses vaccine on themselves.");
+    	System.out.println("2. Virologist uses vaccine on another virologist. (Default)");
+    	System.out.print("Choose one of these scenarios: ");
+    	int selection = sc.next().charAt(0);
+    	
+    	if(selection == '1') {
+    		Virologist v1 = new Virologist("v1");
+    		Vaccine v = new Vaccine("v");
+    		
+    		System.out.println("Start:");
+        	List<Virologist> targets = new ArrayList<Virologist>();
+        	targets.add(v1);
+        	v1.useAgent(targets, v);
+    	}else {
+    		Virologist v1 = new Virologist("v1");
+        	Virologist v2 = new Virologist("v2");
+        	Vaccine v = new Vaccine("v");
+        	
+        	System.out.println("Start:");
+        	List<Virologist> targets = new ArrayList<Virologist>();
+        	targets.add(v2);
+        	v1.useAgent(targets, v);
+    	}
+    }
+    
+    public static void steal() {
+    	System.out.println("Virologist steals");
+    	System.out.println("Initializing:");
+    	
+    	Virologist v1 = new Virologist("v1");
+    	Virologist v2 = new Virologist("v2");
+		System.out.print(main.printIndentation() + "Is the target paralyzed? (y/n): ");
+    	if(main.sc.next().charAt(0) == 'y') {
+    		v2.setParalyzed(true);
+    	}
+    	Bag b = new Bag("b");
+    	LabCoat l = new LabCoat("l");
+    	Gloves g = new Gloves("g");
+    	
+    	b.onPickup(v2);
+    	v2.addGear(l);
+    	v2.addGear(g);
+    	v2.addAminoacid(5);
+    	v2.addNucleotid(3);
+    	
+    	System.out.println("Start:");
+    	v1.stealFrom(v2);
+    }
+    
+    public static void move() {
+    	System.out.println("Virologist moves");
+    	System.out.println("Initializing:");
+    	
+    	Virologist v = new Virologist("v");
+    	Field f1 = new Field("f1");
+    	Field f2 = new Field("f2");
+		System.out.print(main.printIndentation() + "Is the target paralyzed? (y/n): ");
+    	if(main.sc.next().charAt(0) == 'y') {
+    		v.setParalyzed(true);
+    	}else {
+    		System.out.print(main.printIndentation() + "Is the target infected with chorea? (y/n): ");
+        	if(main.sc.next().charAt(0) == 'y') {
+        		v.setChorea(true);
+        	}
+    	}
+    	
+    	v.setField(f1);
+    	
+    	System.out.println("Start:");
+    	v.move(f2);
     }
 }

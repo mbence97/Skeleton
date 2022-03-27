@@ -14,10 +14,16 @@ import java.util.*;
 
 /** */
 public class Gloves extends Gear {
+	private String name;
+	
+	public Gloves(String _name) {
+		name = _name;
+	}
+	
 	/** */
 	public boolean specialEffect(Virologist v, Virologist att, Agent a) {
 		main.increaseIndentation();
-		System.out.println(main.printIndentation() + "->specialEffect()");
+		System.out.println(main.printIndentation() + "->" + name + ".specialEffect()");
 		
 		List<Virologist> l = new ArrayList<Virologist>();
 		l.add(att);
@@ -26,5 +32,22 @@ public class Gloves extends Gear {
 		System.out.println(main.printIndentation() + "<-true");
 		main.decreaseIndentation();
 		return true;
+	}
+	
+	/** */
+	public void onPickup(Virologist v) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".onPickup()");
+		v.addGear(this);
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
+	}
+	
+	/** */
+	public void onLoss(Virologist v) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".onLoss()");
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
 	}
 }

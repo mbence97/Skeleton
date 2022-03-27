@@ -16,30 +16,57 @@ import java.util.*;
 
 /** */
 class Virologist implements Steppable {
-	private int nucleotidCount;
-	private int aminoacidCount;
-	private int maxAgents;
-	private int maxMaterials;
-	private boolean paralyzed;
-	private boolean chorea;
-	private boolean vaccinated;
+	private int nucleotidCount = 0;
+	private int aminoacidCount = 0;
+	private int maxAgents = 2;
+	private int maxMaterials = 5;
+	private boolean paralyzed = false;
+	private boolean chorea = false;
+	private boolean vaccinated = false;
 	private List<Agent> agents = new ArrayList<Agent>();
 	private List<GeneticCode> geneticCodes = new ArrayList<GeneticCode>();
 	public Field field;
 	private List<Gear> gears = new ArrayList<Gear>();
+	private String name;
+	
+	public Virologist(String _name) {
+		name = _name;
+	}
 	
 	/** */
 	public void createAgent(String agent) {
 	}
 	
 	/** */
-	public void move(Field field) {
+	public void move(Field f) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".move()");
+		
+		if(!paralyzed) {
+			field.removeVirologist(this);
+			
+			if(chorea) {
+				List<Field> neighbours = field.getNeighbours();
+				Field random = new Field("random");
+				random.addVirologist(this);
+				field = random;
+				System.out.println(main.printIndentation() + "Moving to a random field.");
+			}else {
+				f.addVirologist(this);
+				field = f;
+				System.out.println(main.printIndentation() + "Moving normally.");
+			}
+		}else {
+			System.out.println(main.printIndentation() + "Moving failed.");
+		}
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
 	}
 	
 	/** */
 	public void useAgent(List<Virologist> virologists, Agent agent) {
 		main.increaseIndentation();
-		System.out.println(main.printIndentation() + "->useAgent()");
+		System.out.println(main.printIndentation() + "->" + name + ".useAgent()");
 		
 		agent.causeEffect(virologists, this);
 		System.out.println(main.printIndentation() + "<-");
@@ -48,28 +75,70 @@ class Virologist implements Steppable {
 	
 	/** */
 	public void setMaxMaterials(int n) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".setMaxMaterials()");
+		maxMaterials = n;
+		System.out.println(main.printIndentation() + "Max materials changed to " + n + ".");
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
 	}
 	
 	/** */
 	public void setMaxAgents(int n) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".setMaxAgents()");
+		maxAgents = n;
+		System.out.println(main.printIndentation() + "Max agent changed to " + n + ".");
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
 	}
 	
 	/** */
-	public int addNucleotid() {
-		return 0;
+	public void addNucleotid(int n) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".addNucleotid()");
+		nucleotidCount += n;
+		if(nucleotidCount > maxMaterials)
+			nucleotidCount = maxMaterials;
+		System.out.println(main.printIndentation() + n + " nucleotid received, now " + nucleotidCount +" in inventory.");
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
 	}
 	
 	/** */
 	public void removeNucleotid(int n) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".removeNucleotid()");
+		nucleotidCount -= n;
+		if(nucleotidCount < 0)
+			nucleotidCount = 0;
+		System.out.println(main.printIndentation() + n + " nucleotid lost, now " + nucleotidCount +" in inventory.");
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
 	}
 	
 	/** */
 	public void addAminoacid(int n) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".addAminoacid()");
+		aminoacidCount += n;
+		if(aminoacidCount > maxMaterials)
+			aminoacidCount = maxMaterials;
+		System.out.println(main.printIndentation() + n + " aminoacid received, now " + aminoacidCount +" in inventory.");
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
 	}
 	
 	/** */
-	public int removeAminoacid() {
-		return 0;
+	public void removeAminoacid(int n) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".removeAminoacid()");
+		aminoacidCount -= n;
+		if(aminoacidCount < 0)
+			aminoacidCount = 0;
+		System.out.println(main.printIndentation() + n + " aminoacid lost, now " + aminoacidCount +" in inventory.");
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
 	}
 	
 	/** */
@@ -78,12 +147,18 @@ class Virologist implements Steppable {
 	
 	/** */
 	public void forgetGeneticCodes() {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".forgetGeneticCodes()");
+		geneticCodes = new ArrayList<GeneticCode>();
+		System.out.println(main.printIndentation() + "Infected with amnesia, forgot all genetic codes.");
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
 	}
 	
 	/** */
 	public void addGear(Gear g) {
 		main.increaseIndentation();
-		System.out.println(main.printIndentation() + "->addGear()");
+		System.out.println(main.printIndentation() +  "->" + name + ".addGear()");
 		if(gears.size()<3)
 			gears.add(g);
 		System.out.println(main.printIndentation() + "<-");
@@ -93,20 +168,23 @@ class Virologist implements Steppable {
 	/** */
 	public boolean infect(Agent a, Virologist att) {
 		main.increaseIndentation();
-		System.out.println(main.printIndentation() + "->infect()");
+		System.out.println(main.printIndentation() + "->" + name + ".infect()");
 		
 		if(!vaccinated) {
 			for(int i=0;i<gears.size();i++) {
 				if(gears.get(i).specialEffect(this, att, a)) {
+					System.out.println(main.printIndentation() + "Infection failed.");
 					System.out.println(main.printIndentation() + "<-false");
 					main.decreaseIndentation();
 					return false;
 				}
 			}
+			System.out.println(main.printIndentation() + "Infection succesful.");
 			System.out.println(main.printIndentation() + "<-true");
 			main.decreaseIndentation();
 			return true;
 		}
+		System.out.println(main.printIndentation() + "Infection failed.");
 		System.out.println(main.printIndentation() + "<-false");
 		main.decreaseIndentation();
 		return false;
@@ -114,28 +192,72 @@ class Virologist implements Steppable {
 	
 	/** */
 	public void stealFrom(Virologist target) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".stealFrom()");
+		
+		target.steal(this);
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
 	}
 	
 	/** */
 	public void steal(Virologist attacker) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".steal()");
+		
+		if(paralyzed) {
+			attacker.addAminoacid(aminoacidCount);
+			attacker.addNucleotid(nucleotidCount);
+			aminoacidCount = 0;
+			nucleotidCount = 0;
+			for(int i=0;i<gears.size();i++) {
+				gears.get(i).onPickup(attacker);
+				gears.get(i).onLoss(this);
+			}
+			gears = new ArrayList<Gear>();
+			System.out.println(main.printIndentation() + "Steal succesful.");
+		}else {
+			System.out.println(main.printIndentation() + "Steal failed.");
+		}
+    	System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
 	}
 	
 	/** */
 	public void setField(Field f) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".setField()");
+		field = f;
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
 	}
 	
 	/** */
 	public void setVaccinated(boolean b) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".setVaccinated()");
+		vaccinated = true;
+		System.out.println(main.printIndentation() + "Vaccine takes effect.");
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
 	}
 	
 	/** */
 	public void setParalyzed(boolean b) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".setParalyzed()");
+		paralyzed = true;
+		System.out.println(main.printIndentation() + "Infected with paralisis.");
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
 	}
 	
 	/** */
 	public void setChorea(boolean b) {
 		main.increaseIndentation();
-		System.out.println(main.printIndentation() + "->setChorea()");
+		System.out.println(main.printIndentation() + "->" + name + ".setChorea()");
+		chorea = true;
+		System.out.println(main.printIndentation() + "Infected with chorea.");
 		System.out.println(main.printIndentation() + "<-");
 		main.decreaseIndentation();
 	}

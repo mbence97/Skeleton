@@ -14,11 +14,12 @@
 
 /** */
 public class Storage extends Field {
-	/** */
 	private int nucleotidCount;
-	
-	/** */
 	private int aminoacidCount;
+	
+	public Storage(String _name) {
+		super(_name);
+	}
 	
 	/** */
 	public void interact(Virologist v) {

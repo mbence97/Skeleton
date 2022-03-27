@@ -19,6 +19,7 @@ public abstract class Gear {
 	
 	/** */
 	public void onPickup(Virologist v) {
+		
 	}
 	
 	/** */
