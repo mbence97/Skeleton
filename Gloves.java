@@ -10,12 +10,21 @@
 //
 
 
-
+import java.util.*;
 
 /** */
 public class Gloves extends Gear {
 	/** */
 	public boolean specialEffect(Virologist v, Virologist att, Agent a) {
-		return false;
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->specialEffect()");
+		
+		List<Virologist> l = new ArrayList<Virologist>();
+		l.add(att);
+		a.causeEffect(l, v);
+		
+		System.out.println(main.printIndentation() + "<-true");
+		main.decreaseIndentation();
+		return true;
 	}
 }

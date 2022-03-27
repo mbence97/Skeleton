@@ -17,9 +17,6 @@ import java.util.List;
 /** */
 public abstract class Agent implements Steppable {
 	/** */
-	public Virologist Unnamed1;
-	
-	/** */
 	public abstract void causeEffect(List<Virologist> targets, Virologist source);
 	
 	/** */

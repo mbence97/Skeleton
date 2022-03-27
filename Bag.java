@@ -16,6 +16,11 @@
 public class Bag extends Gear {
 	/** */
 	public boolean specialEffect(Virologist v, Virologist att, Agent a) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->specialEffect()");
+		
+    	System.out.println(main.printIndentation() + "<-false");
+		main.decreaseIndentation();
 		return false;
 	}
 }

@@ -12,44 +12,21 @@ import java.util.List;
 //
 
 
-
+import java.util.*;
 
 /** */
 class Virologist implements Steppable {
-	/** */
 	private int nucleotidCount;
-	
-	/** */
 	private int aminoacidCount;
-	
-	/** */
 	private int maxAgents;
-	
-	/** */
 	private int maxMaterials;
-	
-	/** */
 	private boolean paralyzed;
-	/** */
 	private boolean chorea;
-	
-	/** */
 	private boolean vaccinated;
-	
-	/** */
-	public Agent Unnamed1;
-	
-	/** */
-	private Agent agents;
-	
-	/** */
-	private GeneticCode geneticCodes;
-	
-	/** */
-	public Field Unnamed4;
-	
-	/** */
-	private Gear gears;
+	private List<Agent> agents = new ArrayList<Agent>();
+	private List<GeneticCode> geneticCodes = new ArrayList<GeneticCode>();
+	public Field field;
+	private List<Gear> gears = new ArrayList<Gear>();
 	
 	/** */
 	public void createAgent(String agent) {
@@ -61,6 +38,12 @@ class Virologist implements Steppable {
 	
 	/** */
 	public void useAgent(List<Virologist> virologists, Agent agent) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->useAgent()");
+		
+		agent.causeEffect(virologists, this);
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
 	}
 	
 	/** */
@@ -99,10 +82,33 @@ class Virologist implements Steppable {
 	
 	/** */
 	public void addGear(Gear g) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->addGear()");
+		if(gears.size()<3)
+			gears.add(g);
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
 	}
 	
 	/** */
 	public boolean infect(Agent a, Virologist att) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->infect()");
+		
+		if(!vaccinated) {
+			for(int i=0;i<gears.size();i++) {
+				if(gears.get(i).specialEffect(this, att, a)) {
+					System.out.println(main.printIndentation() + "<-false");
+					main.decreaseIndentation();
+					return false;
+				}
+			}
+			System.out.println(main.printIndentation() + "<-true");
+			main.decreaseIndentation();
+			return true;
+		}
+		System.out.println(main.printIndentation() + "<-false");
+		main.decreaseIndentation();
 		return false;
 	}
 	
@@ -128,6 +134,10 @@ class Virologist implements Steppable {
 	
 	/** */
 	public void setChorea(boolean b) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->setChorea()");
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
 	}
 	
 	/** */

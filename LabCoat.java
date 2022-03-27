@@ -16,6 +16,17 @@
 public class LabCoat extends Gear {
 	/** */
 	public boolean specialEffect(Virologist v, Virologist att, Agent a) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->specialEffect()");
+		
+		System.out.print("Does the labcoat protect the virologist? (y/n): ");
+    	if(main.sc.next().charAt(0) == 'y') {
+    		System.out.println(main.printIndentation() + "<-true");
+    		main.decreaseIndentation();
+    		return true;
+    	}
+    	System.out.println(main.printIndentation() + "<-false");
+		main.decreaseIndentation();
 		return false;
 	}
 }
