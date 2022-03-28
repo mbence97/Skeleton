@@ -21,7 +21,6 @@ public abstract class Gear {
 	public void onPickup(Virologist v) {
 		
 	}
-	
 	/** */
 	public void onLoss(Virologist v) {
 	}

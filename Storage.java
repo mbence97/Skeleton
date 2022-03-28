@@ -21,7 +21,22 @@ public class Storage extends Field {
 		super(_name);
 	}
 	
+	public void setMaterials(int nucleotid, int aminoacid) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".setMaterials()");
+		this.nucleotidCount = nucleotid;
+		this.aminoacidCount = aminoacid;
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
+	}
+	
 	/** */
 	public void interact(Virologist v) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".interact()");
+		v.addAminoacid(aminoacidCount);
+		v.addNucleotid(nucleotidCount);
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
 	}
 }

@@ -9,10 +9,13 @@ public class main {
     	
     	switch(x) {
     	case 1:
+    		picksUpBag();
     		break;
     	case 2:
+    		picksUpGloves();
     		break;
     	case 3:
+    		picksUpLabcoat();
     		break;
     	case 4:
     		attackChorea();
@@ -48,6 +51,7 @@ public class main {
 			labInteract();
 			break;
     	case 15:
+    		pickUpMaterial();
     		break;
     	default :
     		System.out.println("Invalid selection.");
@@ -75,6 +79,45 @@ public class main {
     	System.out.print("Select scenario: ");
     	selection = sc.nextInt();
     	return selection;
+    }
+    
+    public static void picksUpBag() {
+    	System.out.println("Virologist picks up bag");
+    	System.out.println("Initializing:");
+    	Virologist v = new Virologist("v");
+    	Bag b = new Bag ("b");
+    	Shelter s = new Shelter("s");	
+    	s.addVirologist(v);
+    	v.setField(s);	
+    	s.setGear(b);
+    	System.out.println("Start:");
+    	v.fieldInteract();
+    }
+    
+    public static void picksUpGloves() {
+    	System.out.println("Virologist picks up gloves");
+    	System.out.println("Initializing:");
+    	Virologist v = new Virologist("v");
+    	Shelter s = new Shelter("s");
+    	Gloves g = new Gloves ("g");
+    	s.addVirologist(v);
+    	v.setField(s);	
+    	s.setGear(g);
+    	System.out.println("Start:");
+    	v.fieldInteract();
+    }
+    
+    public static void picksUpLabcoat() {
+    	System.out.println("Virologist picks up labcoat");
+    	System.out.println("Initializing:");
+    	Virologist v = new Virologist("v");
+    	Shelter s = new Shelter("s");
+    	LabCoat l = new LabCoat ("l");
+    	s.addVirologist(v);
+    	v.setField(s);	
+    	s.setGear(l);
+    	System.out.println("Start:");
+    	v.fieldInteract();
     }
     
     public static void increaseIndentation() {
@@ -315,4 +358,17 @@ public class main {
 		System.out.println("Start:");
 		v.fieldInteract();
 	}
+	
+	public static void pickUpMaterial() {
+		System.out.println("Virologist picks up materials");
+		System.out.println("Initializing:");
+		Virologist v = new Virologist("v");
+    	Storage s = new Storage("s");
+    	s.addVirologist(v);
+    	s.setMaterials(3, 3);
+    	v.setField(s);	
+    	System.out.println("Start:");
+    	v.fieldInteract();
+	}
+	
 }

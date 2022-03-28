@@ -19,8 +19,21 @@ public class Shelter extends Field {
 	public Shelter(String _name) {
 		super(_name);
 	}
-	
+
+	public void setGear(Gear g) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".setGear()");
+		gear = g;
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
+	}
+
 	/** */
 	public void interact(Virologist v) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".interact()");
+		gear.onPickup(v);
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
 	}
 }

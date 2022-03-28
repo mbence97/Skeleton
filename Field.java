@@ -19,7 +19,7 @@ import java.util.List;
 public class Field {
 	private List<Field> neigbours = new ArrayList<Field>();
 	protected List<Virologist> virologists = new ArrayList<Virologist>();
-	private String name;
+	protected String name;
 	
 	public Field(String _name) {
 		name = _name;
