@@ -15,21 +15,38 @@ import java.util.List;
 
 
 
-/** */
+/** 
+ * Egy mezőt reprezentál a játékban. Önmagában egy üres mező, 
+ * leszármazottai (raktár, óvóhely, laboratórium) viszont különböző felelősséggel rendelkeznek.
+ * */
+
 public class Field {
 	private List<Field> neigbours = new ArrayList<Field>();
 	protected List<Virologist> virologists = new ArrayList<Virologist>();
 	protected String name;
 	
+	/** 
+	 * A konstruktor beállítja az objektum nevét, csak tesztelési célra.
+	 * */
+	
 	public Field(String _name) {
 		name = _name;
 	}
+	
+	/** 
+	 * Ez a függvény írja le a mező interakcióját. 
+	 * Az üres mező interakciója semmit nem csinál, 
+	 * azonban a leszármazottak különböző eseményeket valósítanak meg ebben a függvényben.
+	 * */
 	
 	public void interact(Virologist v) {
 		
 	}
 	
-	/** */
+	/** 
+	 * Visszaadja a mezőn található virológusokat.
+	 * */
+	
 	public List<Virologist> getVirologists() {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".getVirologists()");
@@ -38,7 +55,10 @@ public class Field {
 		return virologists;
 	}
 	
-	/** */
+	/** 
+	 * Beállítja a mező szomszédait.
+	 * */
+	
 	public void setNeighbours(List<Field> n) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".setNeighbours()");
@@ -47,7 +67,10 @@ public class Field {
 		main.decreaseIndentation();
 	}
 	
-	/** */
+	/** 
+	 * Visszaadja  a szomszédos mezők listáját.
+	 * */
+	
 	public List<Field> getNeighbours() {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".getNeighbours()");
@@ -56,7 +79,10 @@ public class Field {
 		return neigbours;
 	}
 	
-	/** */
+	/** 
+	 * Hozzáad egy virológust a listához.
+	 * */
+	
 	public void addVirologist(Virologist v) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".addVirologist()");
@@ -65,7 +91,10 @@ public class Field {
 		main.decreaseIndentation();
 	}
 	
-	/** */
+	/** 
+	 * Leveszi a paraméterként kapott virológust a listáról.
+	 * */
+	
 	public void removeVirologist(Virologist v) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".removeVirologist()");

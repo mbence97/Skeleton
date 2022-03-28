@@ -12,15 +12,28 @@
 
 
 
-/** */
+/** 
+ * A védőköpeny felszerelést reprezentálja. 
+ * Használatával 82,3%-os védelmet nyer a virológus az ágensek ellen. 
+ * */
+
 public class LabCoat extends Gear {
 	private String name;
+	
+	/** 
+	 * A konstruktor beállítja az objektum nevét, csak tesztelési célra.
+	 * */
 	
 	public LabCoat(String _name) {
 		name = _name;
 	}
 	
-	/** */
+	/** 
+	 * A védőfelszerelés speciális függvénye amely segítségével támadás esetén aktiválódik a felszerelés hatása a virológuson. 
+	 * A virológust ért támadás esetén 82,3%-os eséllyel megvédi az ágens hatásától, 
+	 * ilyenkor true értékkel tér vissza, egyébként false-al.
+	 * */
+	
 	public boolean specialEffect(Virologist v, Virologist att, Agent a) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".specialEffect()");
@@ -36,7 +49,10 @@ public class LabCoat extends Gear {
 		return false;
 	}
 	
-	/** */
+	/** 
+	 * A védőfelszerelések felvételénél kifejtik hatásukat a virológusra. A védőköpeny esetében nem csinál semmit.
+	 * */
+	
 	public void onPickup(Virologist v) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".onPickup()");
@@ -45,7 +61,11 @@ public class LabCoat extends Gear {
 		main.decreaseIndentation();
 	}
 	
-	/** */
+	/** 
+	 * A védőfelszerelések elvesztésekor a virológus is elveszíti a felvételkor szerzett hatásokat. 
+	 * A védőköpeny esetében nem csinál semmit.
+	 * */
+	
 	public void onLoss(Virologist v) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".onLoss()");

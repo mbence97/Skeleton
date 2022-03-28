@@ -12,15 +12,29 @@
 
 import java.util.*;
 
-/** */
+/** 
+ * A védőkesztyű felszerelést reprezentálja. Használatával  a felkent ágens a kenőre visszadobható. 
+ * Ha a kenőn és az áldozatán is van kesztyű, akkor az ágens hatástalan (elhasználódik).
+ * */
+
 public class Gloves extends Gear {
 	private String name;
+	
+	/** 
+	 * A konstruktor beállítja az objektum nevét, csak tesztelési célra.
+	 * */
 	
 	public Gloves(String _name) {
 		name = _name;
 	}
 	
-	/** */
+	/** 
+	 * A védőfelszerelés speciális függvénye amely segítségével támadás esetén aktiválódik a felszerelés hatása a virológuson. 
+	 * A virológust ért támadás esetén az ágenst visszadobja a támadónak, 
+	 * meghívja az ágens causeEffect() függvényét a támadó virológust megadva célpontként. 
+	 * Mivel a kesztyű mindig sikeresen megvédi az őt viselő virológust, mindig true értékkel tér vissza.
+	 * */
+	
 	public boolean specialEffect(Virologist v, Virologist att, Agent a) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".specialEffect()");
@@ -34,7 +48,10 @@ public class Gloves extends Gear {
 		return true;
 	}
 	
-	/** */
+	/** 
+	 * A védőfelszerelések felvételénél kifejtik hatásukat a virológusra. A kesztyű esetében nem csinál semmit.
+	 * */
+	
 	public void onPickup(Virologist v) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".onPickup()");
@@ -43,7 +60,11 @@ public class Gloves extends Gear {
 		main.decreaseIndentation();
 	}
 	
-	/** */
+	/** 
+	 * A védőfelszerelések elvesztésekor a virológus is elveszíti a felvételkor szerzett hatásokat. 
+	 * A kesztyű esetében nem csinál semmit.
+	 * */
+	
 	public void onLoss(Virologist v) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".onLoss()");

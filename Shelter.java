@@ -12,14 +12,27 @@
 
 
 
-/** */
+/** 
+ * Egy óvóhely mezőt reprezentál. 
+ * A játékos ezen a mezőn gyűjthet felszereléseket 
+ * amelyek különböző előnyöket biztosítanak használatuk során.
+ * */
+
 public class Shelter extends Field {
 	public Gear gear;
+	
+	/** 
+	 * A konstruktor beállítja az objektum nevét, csak tesztelési célra.
+	 * */
 	
 	public Shelter(String _name) {
 		super(_name);
 	}
 
+	/** 
+	 * Beállítja az óvóhelyen található felszerelést.
+	 * */
+	
 	public void setGear(Gear g) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".setGear()");
@@ -28,7 +41,13 @@ public class Shelter extends Field {
 		main.decreaseIndentation();
 	}
 
-	/** */
+	/** 
+	 * Az óvóhely mezőn lévő játékos meghívhatja a mező interakciós függvényét. 
+	 * Ez a függvény valósítja meg a védőfelszerelés felszedését. 
+	 * A függvény meghívja a felszerelés (gear) specialEffect függvényét 
+	 * ami aktiválja a felszerelést a játékoson.
+	 * */
+	
 	public void interact(Virologist v) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".interact()");

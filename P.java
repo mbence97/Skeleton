@@ -12,7 +12,16 @@
 
 
 
-/** */
+/** 
+ * A genetikus kódok osztálya. Leírja mennyi anyagra (aminosav és nukleotid) van szükség a Paralisis ágens előállításához, 
+ * és elkészíti ha a virológusnak van elegendő anyaga. 
+ * */
+
 public class P extends GeneticCode {
+	
+	/** 
+	 * A konstruktor beállítja a megfelelő paramétereket a működéshez.
+	 * */
+	
     public P() {requiredNucleotid = 3; requiredAminoacid = 3; agent = new Paralisis("p"); name = "P";}
 }

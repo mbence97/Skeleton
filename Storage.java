@@ -12,14 +12,26 @@
 
 
 
-/** */
+/** 
+ * Egy raktár mezőt reprezentál. A játékos ezen a mezőn anyagokat gyűjthet 
+ * melyeket az ágensek előállításához használhat fel.
+ * */
+
 public class Storage extends Field {
 	private int nucleotidCount;
 	private int aminoacidCount;
 	
+	/** 
+	 * A konstruktor beállítja az objektum nevét, csak tesztelési célra.
+	 * */
+	
 	public Storage(String _name) {
 		super(_name);
 	}
+	
+	/** 
+	 * Beállítja a raktárban található aminosav és nukleotid darabszámát.
+	 * */
 	
 	public void setMaterials(int nucleotid, int aminoacid) {
 		main.increaseIndentation();
@@ -30,7 +42,14 @@ public class Storage extends Field {
 		main.decreaseIndentation();
 	}
 	
-	/** */
+	/** 
+	 * A raktár mezőn lévő játékos meghívhatja a mező interakciós függvényét. 
+	 * Ez a függvény valósítja meg a játékos anyagfelszedését. 
+	 * A raktárban található anyagok a játékoshoz kerülnek azáltal, 
+	 * hogy meghívja a virológus setNucleotidCount és setAminoacidCount függvényeket 
+	 * amelyek segítségével hozzáadódik a virológus anyagkészletéhez a raktárban található mennyiség.
+	 * */
+	
 	public void interact(Virologist v) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".interact()");

@@ -12,7 +12,16 @@
 
 
 
-/** */
+/** 
+ * A genetikus kódok osztálya. Leírja mennyi anyagra (aminosav és nukleotid) van szükség a Vaccine ágens előállításához, 
+ * és elkészíti ha a virológusnak van elegendő anyaga. 
+ * */
+
 public class V extends GeneticCode {
+	
+	/** 
+	 * A konstruktor beállítja a megfelelő paramétereket a működéshez.
+	 * */
+	
     public V() {requiredNucleotid = 1; requiredAminoacid = 1; agent = new Vaccine("v"); name = "V";}
 }

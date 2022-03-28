@@ -12,15 +12,29 @@
 
 
 
-/** */
+/** 
+ * Egy laboratórium mezőt reprezentál. 
+ * A játékos ezen a mezőn tanulhatja meg a genetikus kódokat valamint állíthat elő ágenseket.
+ * */
+
 public class Laboratory extends Field {
 	public GeneticCode geneticCode;
 
+	/** 
+	 * A konstruktor beállítja az objektum nevét, csak tesztelési célra.
+	 * */
+	
 	public Laboratory(String _name) {
 		super(_name);
 	}
 
-	/** */
+	/** 
+	 * A laboratórium mezőn lévő játékos meghívhatja a mező interakciós függvényét. 
+	 * Ez a függvény valósítja meg, hogy a virológus megtanulja a laboratórium genetikus kódját 
+	 * - meghívja a virológus addGeneticCode függvényét. Ha már ismeri a virológus a kódot, 
+	 * akkor nem történik változás.
+	 * */
+	
 	public void interact(Virologist v) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".interact()");
@@ -32,6 +46,10 @@ public class Laboratory extends Field {
 
 	}
 
+	/** 
+	 * Beállítja a laboratóriumban található genetikai kódot.
+	 * */
+	
 	public void addGeneticCode(GeneticCode gc) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".addGeneticCode()");

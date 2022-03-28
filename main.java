@@ -39,13 +39,13 @@ public class main {
 			createAmnesia();
     		break;
     	case 11:
-			createChorea();
+    		createParalisis();
     		break;
     	case 12:
-			createVaccine();
+    		createChorea();
     		break;
     	case 13:
-			createParalisis();
+    		createVaccine();
     		break;
     	case 14:
 			labInteract();

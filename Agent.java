@@ -14,12 +14,23 @@ import java.util.List;
 
 
 
-/** */
+/** 
+ * Az ágensek absztrakt ősosztálya. Az ágensek genetikus kódok alapján állíthatóak elő. 
+ * Különböző hatással rendelkeznek melyek kihatnak a játékosokra.
+ * */
+
 public abstract class Agent implements Steppable {
-	/** */
+	/** 
+	 * A függvény a paraméterként kapott virológusokra megpróbálja az ágenst rákenni és kiváltani a hatását. 
+	 * Ez a hatás minden ágensnél más ás más.
+	 * */
+	
 	public abstract void causeEffect(List<Virologist> targets, Virologist source);
 	
-	/** */
+	/** 
+	 * A Steppable interfészből implementált step() függvény. Az idő múlásának hatását valósítja meg.
+	 * */
+	
 	public void step() {
 	}
 }

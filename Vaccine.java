@@ -14,15 +14,27 @@ import java.util.List;
 
 
 
-/** */
+/** 
+ * A vakcina olyan ágens amely megvéd attól, 
+ * hogy más virológusok egyes ágensei hatással legyenek az ágens hatása alatt álló virológusra.
+ * */
+
 public class Vaccine extends Agent {
-private String name;
+	private String name;
+	
+	/** 
+ 	* A konstruktor beállítja az objektum nevét, csak tesztelési célra.
+ 	* */
 	
 	public Vaccine(String _name) {
 		name = _name;
 	}
 	
-	/** */
+	/** 
+	 * A függvény a paraméterként kapott virológusokra megpróbálja az ágenst rákenni és kiváltani a hatását: 
+	 * megvédeni a virológusokat más virológusok ágenseitől.
+	 * */
+	
 	public void causeEffect(List<Virologist> targets, Virologist source) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".causeEffect()");
@@ -35,7 +47,10 @@ private String name;
 		main.decreaseIndentation();
 	}
 	
-	/** */
+	/** 
+	 * A Steppable interfészből implementált step() függvény. Az idő múlásának hatását valósítja meg.
+	 * */
+	
 	public void step() {
 	}
 }

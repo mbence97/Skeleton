@@ -12,16 +12,31 @@
 
 
 
-/** */
+/** 
+ * Egy védőfelszerelést reprezentál. Absztrakt alaposztály, 
+ * konkrét példányai a következők lehetnek: zsák, védőköpeny, védőkesztyű.
+ * */
+
 public abstract class Gear {
-	/** */
+	/** 
+	 * A védőfelszerelések speciális függvénye amely segítségével támadás esetén 
+	 * aktiválódik a felszerelés hatása a virológuson. Visszatérési értéke true, 
+	 * ha sikeresen megvédte a virológust, vagy false, ha nem védte meg az ágens hatásától.
+	 * */
+	
 	public abstract boolean specialEffect(Virologist v, Virologist att, Agent a);
 	
-	/** */
+	/** 
+	 * A védőfelszerelések felvételénél kifejtik hatásukat a virológusra.
+	 * */
+	
 	public void onPickup(Virologist v) {
 		
 	}
-	/** */
+	/** 
+	 * A védőfelszerelések elvesztésekor a virológus is elveszíti a felvételkor szerzett hatásokat.
+	 * */
+	
 	public void onLoss(Virologist v) {
 	}
 }

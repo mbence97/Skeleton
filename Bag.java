@@ -12,15 +12,28 @@
 
 
 
-/** */
+/** 
+ * A zsák felszerelést reprezentálja. 
+ * Használatával megnövekszik a virológus maximális anyag és maximális ágens kapacitása.
+ * */
+
 public class Bag extends Gear {
 	private String name;
+	
+	/** 
+	 * A konstruktor beállítja az objektum nevét, csak tesztelési célra.
+	 * */
 	
 	public Bag(String _name) {
 		name = _name;
 	}
 	
-	/** */
+	/** 
+	 * A védőfelszerelés speciális függvénye amely segítségével támadás esetén aktiválódik a 
+	 * felszerelés hatása a virológuson. Ez a függvény a Bag esetében nem csinál semmit, 
+	 * mindig false értékkel tér vissza.
+	 * */
+	
 	public boolean specialEffect(Virologist v, Virologist att, Agent a) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".specialEffect()");
@@ -30,7 +43,12 @@ public class Bag extends Gear {
 		return false;
 	}
 	
-	/** */
+	/** 
+	 * A védőfelszerelések felvételénél kifejtik hatásukat a virológusra. 
+	 * Felvételkor meghívja a virológus setMaxMaterials és setMaxAgents függvényét, 
+	 * ezzel beállítva a maximum anyag és maximum ágens megfelelő értékét.
+	 * */
+	
 	public void onPickup(Virologist v) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".onPickup()");
@@ -41,14 +59,17 @@ public class Bag extends Gear {
 		main.decreaseIndentation();
 	}
 	
-	/** */
+	/** 
+	 * A védőfelszerelések elvesztésekor a virológus is elveszíti a felvételkor szerzett hatásokat. 
+	 * Meghívja a virológus setMaxMaterials és setMaxAgents függvényét, 
+	 * ezzel visszaállítva a maximum anyag és maximum ágens értékét az eredeti értékre.
+	 * */
+	
 	public void onLoss(Virologist v) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".onLoss()");
 		v.setMaxMaterials(5);
 		v.setMaxAgents(2);
-		v.addAminoacid(0);
-		v.addNucleotid(0);
 		System.out.println(main.printIndentation() + "<-");
 		main.decreaseIndentation();
 	}

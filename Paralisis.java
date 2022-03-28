@@ -14,15 +14,26 @@ import java.util.List;
 
 
 
-/** */
+/** 
+ * A paralízis olyan ágens, amely megbénít, így amíg az ágens hatása tart, az áldozat nem tud semmit csinálni (lebénul).
+ * */
+
 public class Paralisis extends Agent {
 	private String name;
+	
+	/** 
+ 	* A konstruktor beállítja az objektum nevét, csak tesztelési célra.
+ 	* */
 	
 	public Paralisis(String _name) {
 		name = _name;
 	}
 	
-	/** */
+	/** 
+	 * A függvény a paraméterként kapott virológusokra megpróbálja az ágenst rákenni és kiváltani a hatását: 
+	 * megbénítani a virológusokat, ez azt eredményezi, hogy amíg az ágens hatása tart az áldozat nem tud semmit csinálni (lebénul).
+	 * */
+	
 	public void causeEffect(List<Virologist> targets, Virologist source) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".causeEffect()");
@@ -37,7 +48,10 @@ public class Paralisis extends Agent {
 		main.decreaseIndentation();
 	}
 	
-	/** */
+	/** 
+	 * A Steppable interfészből implementált step() függvény. Az idő múlásának hatását valósítja meg.
+	 * */
+	
 	public void step() {
 	}
 }

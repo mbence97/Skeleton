@@ -14,7 +14,14 @@ import java.util.List;
 
 import java.util.*;
 
-/** */
+/** 
+ * Egy játékos által irányított virológust reprezentál a játékban. 
+ * Mozognak a városban azzal a céllal hogy megtanulják az összes genetikai kódot a laboratóriumokból. 
+ * Felszereléseket gyűjthetnek óvóhelyekről valamint anyagokat raktárakból az ágensek előállításához 
+ * (ezeket a laboratóriumokban tudják előállítani). 
+ * Az elkészített ágenseket felhasználhatják saját magukra vagy felkenhetik másik virológusra.
+ * */
+
 class Virologist implements Steppable {
 	private int nucleotidCount = 0;
 	private int aminoacidCount = 0;
@@ -29,11 +36,18 @@ class Virologist implements Steppable {
 	private List<Gear> gears = new ArrayList<Gear>();
 	private String name;
 	
+	/** 
+	 * A konstruktor beállítja az objektum nevét, csak tesztelési célra.
+	 * */
+	
 	public Virologist(String _name) {
 		name = _name;
 	}
 	
-	/** */
+	/** 
+	 * Ágens készítésére szolgáló függvény.
+	 * */
+	
 	public void createAgent(String agent) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".createAgent()");
@@ -66,7 +80,10 @@ class Virologist implements Steppable {
 		main.decreaseIndentation();
 	}
 	
-	/** */
+	/** 
+	 * A virológusok mozgását valósítja meg.
+	 * */
+	
 	public void move(Field f) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".move()");
@@ -92,7 +109,11 @@ class Virologist implements Steppable {
 		main.decreaseIndentation();
 	}
 	
-	/** */
+	/** 
+	 * Egy ágens használatát megvalósító függvény. Ha a virológus egyedül áll egy mezőn akkor magára használja el az ágenst, 
+	 * ha más virológus(ok) is áll(nak) a mezőn akkor megpróbálja rájuk kenni az ágenset.
+	 * */
+	
 	public void useAgent(List<Virologist> virologists, Agent agent) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".useAgent()");
@@ -102,7 +123,10 @@ class Virologist implements Steppable {
 		main.decreaseIndentation();
 	}
 	
-	/** */
+	/** 
+	 * A maximális anyagmennyiség beállítására szolgál.
+	 * */
+	
 	public void setMaxMaterials(int n) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".setMaxMaterials()");
@@ -112,7 +136,10 @@ class Virologist implements Steppable {
 		main.decreaseIndentation();
 	}
 	
-	/** */
+	/** 
+	 * A maximális ágens mennyiség beállítására szolgál.
+	 * */
+	
 	public void setMaxAgents(int n) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".setMaxAgents()");
@@ -122,7 +149,10 @@ class Virologist implements Steppable {
 		main.decreaseIndentation();
 	}
 	
-	/** */
+	/** 
+	 * Növeli a virológusnál lévő nukleoditok számát a paraméterként kapott értékkel.
+	 * */
+	
 	public void addNucleotid(int n) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".addNucleotid()");
@@ -134,7 +164,10 @@ class Virologist implements Steppable {
 		main.decreaseIndentation();
 	}
 	
-	/** */
+	/** 
+	 * Csökkenti a virológusnál lévő nukleoditok számát a paraméterként kapott értékkel.
+	 * */
+	
 	public void removeNucleotid(int n) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".removeNucleotid()");
@@ -146,7 +179,10 @@ class Virologist implements Steppable {
 		main.decreaseIndentation();
 	}
 	
-	/** */
+	/** 
+	 * Növeli a virológusnál lévő aminosavak számát a paraméterként kapott értékkel.
+	 * */
+	
 	public void addAminoacid(int n) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".addAminoacid()");
@@ -158,7 +194,10 @@ class Virologist implements Steppable {
 		main.decreaseIndentation();
 	}
 	
-	/** */
+	/** 
+	 * Csökkentia virológusnál lévő aminosavak számát a paraméterként kapott értékkel.
+	 * */
+	
 	public void removeAminoacid(int n) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".removeAminoacid()");
@@ -170,7 +209,10 @@ class Virologist implements Steppable {
 		main.decreaseIndentation();
 	}
 	
-	/** */
+	/** 
+	 * Genetikus kód megtanulását elvégző függvény. 
+	 * */
+	
 	public void addGeneticCode(GeneticCode g) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".addGeneticCode()");
@@ -182,7 +224,10 @@ class Virologist implements Steppable {
 
 	}
 	
-	/** */
+	/** 
+	 * Az összes genetikus kód elfelejtését végző függvény. Ez az egyik ágens hatása által következhet be.
+	 * */
+	
 	public void forgetGeneticCodes() {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".forgetGeneticCodes()");
@@ -192,7 +237,10 @@ class Virologist implements Steppable {
 		main.decreaseIndentation();
 	}
 	
-	/** */
+	/** 
+	 * Hozzáadja a paraméterként kapott védőfelszerelést a gears listához.
+	 * */
+	
 	public void addGear(Gear g) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() +  "->" + name + ".addGear()");
@@ -202,7 +250,10 @@ class Virologist implements Steppable {
 		main.decreaseIndentation();
 	}
 	
-	/** */
+	/** 
+	 * A támadó megpróbálja megfertőzi a virológust valamilyen ágenssel. Visszatérési érték a fertőzés sikeressége.
+	 * */
+	
 	public boolean infect(Agent a, Virologist att) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".infect()");
@@ -227,7 +278,10 @@ class Virologist implements Steppable {
 		return false;
 	}
 	
-	/** */
+	/** 
+	 * A megadott célpont virológustól megpróbál lopni.
+	 * */
+	
 	public void stealFrom(Virologist target) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".stealFrom()");
@@ -237,7 +291,10 @@ class Virologist implements Steppable {
 		main.decreaseIndentation();
 	}
 	
-	/** */
+	/** 
+	 * Egy másik virológus megpróbál tőlünk lopni.
+	 * */
+	
 	public void steal(Virologist attacker) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".steal()");
@@ -260,7 +317,10 @@ class Virologist implements Steppable {
 		main.decreaseIndentation();
 	}
 	
-	/** */
+	/** 
+	 * Beállítja a mezőt, amin a virológus éppen tartózkodik.
+	 * */
+	
 	public void setField(Field f) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".setField()");
@@ -269,7 +329,10 @@ class Virologist implements Steppable {
 		main.decreaseIndentation();
 	}
 	
-	/** */
+	/** 
+	 * Beállítja a vaccinated tagváltozót a megfelelő értékre.
+	 * */
+	
 	public void setVaccinated(boolean b) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".setVaccinated()");
@@ -279,7 +342,10 @@ class Virologist implements Steppable {
 		main.decreaseIndentation();
 	}
 	
-	/** */
+	/** 
+	 * Beállítja a paralyzed tagváltozót a megfelelő értékre.
+	 * */
+	
 	public void setParalyzed(boolean b) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".setParalyzed()");
@@ -289,7 +355,10 @@ class Virologist implements Steppable {
 		main.decreaseIndentation();
 	}
 	
-	/** */
+	/** 
+	 * Beállítja a chorea tagváltozót a megfelelő értékre.
+	 * */
+	
 	public void setChorea(boolean b) {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".setChorea()");
@@ -299,7 +368,10 @@ class Virologist implements Steppable {
 		main.decreaseIndentation();
 	}
 	
-	/** */
+	/** 
+	 * Egy mezővel való interfakciót valósít meg.
+	 * */
+	
 	public void fieldInteract() {
 		main.increaseIndentation();
 		System.out.println(main.printIndentation() + "->" + name + ".fieldInteract()");
@@ -310,7 +382,10 @@ class Virologist implements Steppable {
 		main.decreaseIndentation();
 	}
 	
-	/** */
+	/** 
+	 * A Steppable interfészből implementált step() függvény. Az idő múlásának hatását valósítja meg.
+	 * */
+	
 	public void step() {
 	}
 }

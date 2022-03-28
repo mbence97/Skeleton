@@ -12,41 +12,44 @@
 
 
 
-/** */
+/** 
+ * A genetikus kódok osztálya. Leírja mennyi anyagra (aminosav és nukleotid) van szükség az általa meghatározott ágens előállításához, 
+ * és elkészíti ha a virológusnak van elegendő anyaga. Absztrakt alaposztály, konkrét példányai a következők lehetnek: C, A, P, V.
+ * */
+
 public class GeneticCode {
 
 	public String name;
-	/** */
+	
 	protected int requiredNucleotid;
-
-	/** */
+	
 	protected int requiredAminoacid;
-
-	/** */
+	
 	public Agent agent;
 
-	/** */
-	public Laboratory Unnamed3;
-
-	/** */
+	/** 
+	 * Előállítja a megfelelő ágenst, ha a virológus által megadott nukleotid és aminosav száma elegendő. 
+	 * Az elkészített ágenst visszatérési értékként adja vissza.
+	 * */
+	
 	public Agent make(Virologist v, int nuc, int acid) {
-
 		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".make()");
 
 		if(requiredNucleotid > nuc || requiredAminoacid > acid) {
 			System.out.println(main.printIndentation() + "Creation failed due to insufficient materials!" );
 
+			System.out.println(main.printIndentation() + "<-null");
 			main.decreaseIndentation();
-
 			return null;
 		}
 		else {
-			System.out.println(main.printIndentation() + "Creation succesful!");
-			main.decreaseIndentation();
-
 			v.removeAminoacid(requiredAminoacid);
 			v.removeNucleotid(requiredNucleotid);
 
+			System.out.println(main.printIndentation() + "Creation succesful!");
+			System.out.println(main.printIndentation() + "<-" + name.toLowerCase());
+			main.decreaseIndentation();
 			return agent;
 		}
 	}
