@@ -14,4 +14,5 @@
 
 /** */
 public class C extends GeneticCode {
+    public C() {requiredNucleotid = 1; requiredAminoacid = 2; agent = new Chorea("c"); name = "C";}
 }

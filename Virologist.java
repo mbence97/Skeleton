@@ -35,6 +35,35 @@ class Virologist implements Steppable {
 	
 	/** */
 	public void createAgent(String agent) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".createAgent()");
+
+		String selectedAgent = "";
+
+		switch (agent) {
+			case "amnesia":
+				selectedAgent = "A";
+				break;
+			case "chorea":
+				selectedAgent = "C";
+				break;
+			case "vaccine":
+				selectedAgent = "V";
+				break;
+			case "paralisis":
+				selectedAgent = "P";
+				break;
+		}
+
+		for (GeneticCode gc : geneticCodes) {
+			if(gc.name == selectedAgent ){
+				agents.add(gc.make(this, nucleotidCount, aminoacidCount));
+			}
+		}
+
+
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
 	}
 	
 	/** */
@@ -143,6 +172,14 @@ class Virologist implements Steppable {
 	
 	/** */
 	public void addGeneticCode(GeneticCode g) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".addGeneticCode()");
+
+		geneticCodes.add(g);
+		System.out.println(main.printIndentation() + "Genetic code: " + g.name + " gained.");
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
+
 	}
 	
 	/** */
@@ -264,6 +301,13 @@ class Virologist implements Steppable {
 	
 	/** */
 	public void fieldInteract() {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".fieldInteract()");
+
+		field.interact(this);
+
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
 	}
 	
 	/** */

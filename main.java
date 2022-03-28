@@ -33,15 +33,20 @@ public class main {
     		move();
     		break;
     	case 10:
+			createAmnesia();
     		break;
     	case 11:
+			createChorea();
     		break;
     	case 12:
+			createVaccine();
     		break;
     	case 13:
+			createParalisis();
     		break;
     	case 14:
-    		break;
+			labInteract();
+			break;
     	case 15:
     		break;
     	default :
@@ -228,4 +233,86 @@ public class main {
     	System.out.println("Start:");
     	v.move(f2);
     }
+
+	public static void createAmnesia() {
+		System.out.println("Virologist creates amnesia.");
+		System.out.println("Initializing:");
+
+		Virologist v = new Virologist("v");
+		v.addGeneticCode(new A());
+
+		System.out.print("How many aminoacids does the virologist have? (0-5): " );
+		v.addAminoacid(sc.nextInt());
+
+		System.out.print("How many nucleotids does the virologist have? (0-5): " );
+		v.addNucleotid(sc.nextInt());
+
+		System.out.println("Start:");
+		v.createAgent("amnesia");
+	}
+
+	public static void createChorea() {
+		System.out.println("Virologist creates chorea.");
+		System.out.println("Initializing:");
+
+		Virologist v = new Virologist("v");
+		v.addGeneticCode(new C());
+
+		System.out.print("How many aminoacids does the virologist have? (0-5): " );
+		v.addAminoacid(sc.nextInt());
+
+		System.out.print("How many nucleotids does the virologist have? (0-5): " );
+		v.addNucleotid(sc.nextInt());
+
+		System.out.println("Start:");
+		v.createAgent("chorea");
+	}
+
+	public static void createVaccine() {
+		System.out.println("Virologist creates vaccine.");
+		System.out.println("Initializing:");
+
+		Virologist v = new Virologist("v");
+		v.addGeneticCode(new V());
+
+		System.out.print("How many aminoacids does the virologist have? (0-5): " );
+		v.addAminoacid(sc.nextInt());
+
+		System.out.print("How many nucleotids does the virologist have? (0-5): " );
+		v.addNucleotid(sc.nextInt());
+
+		System.out.println("Start:");
+		v.createAgent("vaccine");
+	}
+
+	public static void createParalisis() {
+		System.out.println("Virologist creates paralysis.");
+		System.out.println("Initializing:");
+
+		Virologist v = new Virologist("v");
+		v.addGeneticCode(new P());
+
+		System.out.print("How many aminoacids does the virologist have? (0-5): " );
+		v.addAminoacid(sc.nextInt());
+
+		System.out.print("How many nucleotids does the virologist have? (0-5): " );
+		v.addNucleotid(sc.nextInt());
+
+		System.out.println("Start:");
+		v.createAgent("paralisis");
+	}
+
+	public static void labInteract() {
+		System.out.println("Virologist interacts with laboratory.");
+		System.out.println("Initializing:");
+
+		Virologist v = new Virologist("v");
+		Laboratory l = new Laboratory("l");
+
+		l.addGeneticCode(new A());
+		v.setField(l);
+
+		System.out.println("Start:");
+		v.fieldInteract();
+	}
 }

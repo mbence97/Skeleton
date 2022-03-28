@@ -14,5 +14,5 @@
 
 /** */
 public class P extends GeneticCode {
-	
+    public P() {requiredNucleotid = 3; requiredAminoacid = 3; agent = new Paralisis("p"); name = "P";}
 }

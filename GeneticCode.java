@@ -12,8 +12,10 @@
 
 
 
+/** */
 public class GeneticCode {
 
+	public String name;
 	/** */
 	protected int requiredNucleotid;
 
@@ -28,12 +30,23 @@ public class GeneticCode {
 
 	/** */
 	public Agent make(Virologist v, int nuc, int acid) {
+
+		main.increaseIndentation();
+
 		if(requiredNucleotid > nuc || requiredAminoacid > acid) {
+			System.out.println(main.printIndentation() + "Creation failed due to insufficient materials!" );
+
+			main.decreaseIndentation();
+
 			return null;
 		}
 		else {
+			System.out.println(main.printIndentation() + "Creation succesful!");
+			main.decreaseIndentation();
+
 			v.removeAminoacid(requiredAminoacid);
 			v.removeNucleotid(requiredNucleotid);
+
 			return agent;
 		}
 	}

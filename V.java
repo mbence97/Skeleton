@@ -14,4 +14,5 @@
 
 /** */
 public class V extends GeneticCode {
+    public V() {requiredNucleotid = 1; requiredAminoacid = 1; agent = new Vaccine("v"); name = "V";}
 }

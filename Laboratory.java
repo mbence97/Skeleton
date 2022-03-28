@@ -15,12 +15,30 @@
 /** */
 public class Laboratory extends Field {
 	public GeneticCode geneticCode;
-	
+
 	public Laboratory(String _name) {
 		super(_name);
 	}
-	
+
 	/** */
 	public void interact(Virologist v) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".interact()");
+
+		v.addGeneticCode(geneticCode);
+
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
+
+	}
+
+	public void addGeneticCode(GeneticCode gc) {
+		main.increaseIndentation();
+		System.out.println(main.printIndentation() + "->" + name + ".addGeneticCode()");
+
+		geneticCode = gc;
+
+		System.out.println(main.printIndentation() + "<-");
+		main.decreaseIndentation();
 	}
 }
