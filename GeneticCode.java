@@ -12,22 +12,29 @@
 
 
 
-/** */
 public class GeneticCode {
+
 	/** */
-	private int requiredNucleotid;
-	
+	protected int requiredNucleotid;
+
 	/** */
-	private int requiredAminoacid;
-	
+	protected int requiredAminoacid;
+
 	/** */
-	public Agent Unnamed1;
-	
+	public Agent agent;
+
 	/** */
 	public Laboratory Unnamed3;
-	
+
 	/** */
 	public Agent make(Virologist v, int nuc, int acid) {
-		return Unnamed1;
+		if(requiredNucleotid > nuc || requiredAminoacid > acid) {
+			return null;
+		}
+		else {
+			v.removeAminoacid(requiredAminoacid);
+			v.removeNucleotid(requiredNucleotid);
+			return agent;
+		}
 	}
 }
